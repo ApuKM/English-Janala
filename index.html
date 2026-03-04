@@ -108,9 +108,14 @@
       </div>
     </header>
 
-    <section id="banner" class="w-11/12 mx-auto flex flex-col-reverse md:flex-row justify-between items-center pt-10 md:pt-20">
+    <section
+      id="banner"
+      class="w-11/12 mx-auto flex flex-col-reverse md:flex-row justify-between items-center pt-10 md:pt-20"
+    >
       <div class="left space-y-6 flex-1">
-        <h1 class="text-4xl font-bold text-center md:text-left"><span class="text-sky-500">English</span> is Easy!!</h1>
+        <h1 class="text-4xl font-bold text-center md:text-left">
+          <span class="text-sky-500">English</span> is Easy!!
+        </h1>
         <p class="text-gray-800 font-bangla text-center md:text-left">
           আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
           আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
@@ -133,19 +138,40 @@
     </section>
 
     <section class="pt-10 md:pt-20">
-       <h1 class="text-4xl font-bold text-center mb-6"><span class="text-sky-500">Let's</span> Learn Vocabularies</h1>
-       <div id="level-container" class="flex gap-5 flex-wrap justify-center">
-
-       </div>
+      <h1 class="text-4xl font-bold text-center mb-6">
+        <span class="text-sky-500">Let's</span> Learn Vocabularies
+      </h1>
+      <div
+        id="level-container"
+        class="flex gap-5 flex-wrap justify-center"
+      ></div>
     </section>
 
-    <section id="word-container" class="bg-gray-100 p-10 w-11/12 mx-auto grid grid-cols-3 gap-5 mt-10 md:mt-20">
-     <div class= "text-center font-bangla col-span-3 py-8 space-y-2">
-      <img class="mx-auto" src="./assets/alert-error.png" alt="">
-      <p class="text-lg text-gray-600">আপনি এখনো কোন Lesson Select করেন নি</p>
-      <h2 class="text-2xl text-gray-800">একটি Lesson Select করুন।</h2>
-     </div>
+    <section
+      id="word-container"
+      class="bg-gray-100 p-10 w-11/12 mx-auto grid grid-cols-3 gap-5 mt-10 md:mt-20"
+    >
+      <div class="text-center font-bangla col-span-3 py-8 space-y-2">
+        <img class="mx-auto" src="./assets/alert-error.png" alt="" />
+        <p class="text-lg text-gray-600">আপনি এখনো কোন Lesson Select করেন নি</p>
+        <h2 class="text-2xl text-gray-800">একটি Lesson Select করুন।</h2>
+      </div>
     </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <h3 class="text-lg font-bold">Hello!</h3>
+        <p class="py-4">Press ESC key or click the button below to close</p>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
 
     <script src="./script/script.js"></script>
   </body>

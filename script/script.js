@@ -12,10 +12,17 @@ const diplayLessons = (lessons) => {
     // console.log(lesson);
     const levelBtnElement = document.createElement("div");
     levelBtnElement.innerHTML = `
-        <button onclick="loadWordsByLevel(${lesson.level_no})" class="btn btn-outline btn-primary text-base">Lesson -${lesson.level_no}</button>
+        <button id="btn-active-${lesson.level_no}" onclick="loadWordsByLevel(${lesson.level_no})" class="btn btn-outline btn-primary text-base btn-lesson">Lesson -${lesson.level_no}</button>
         `;
     levelContainer.appendChild(levelBtnElement);
   });
+};
+
+const removeActiveClass = () => {
+  const allBtn = document.querySelectorAll(".btn-lesson");
+  allBtn.forEach((btn) =>
+    btn.classList.remove("bg-[#422AD5]", "text-white"),
+  );
 };
 
 const loadWordsByLevel = (id) => {
@@ -23,7 +30,12 @@ const loadWordsByLevel = (id) => {
   // console.log(url)
   fetch(url)
     .then((res) => res.json())
-    .then((json) => displayWordsByLevel(json.data));
+    .then((json) => {
+      const btnActive = document.getElementById(`btn-active-${id}`);
+      removeActiveClass();
+      btnActive.classList.add("bg-[#422AD5]", "text-white");
+      displayWordsByLevel(json.data);
+    });
 };
 
 const displayWordsByLevel = (dataArray) => {
@@ -49,7 +61,7 @@ const displayWordsByLevel = (dataArray) => {
           <p class="text-lg font-medium opacity-90">Meaning /Pronounciation</p>
           <p class="text-2xl font-semibold font-bangla opacity-90">"${data.meaning ? data.meaning : "অর্থ পাওয়া যায়নি"} / ${data.pronunciation ? data.pronunciation : "Pronunciation পাওয়া যায়নি"}"</p>
         <div class="flex justify-between items-center mt-10">
-          <button class="btn bg-gray-100"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="my_modal_5.showModal()" class="btn bg-gray-100"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn bg-gray-100"><i class="fa-solid fa-volume-xmark"></i></button>
         </div>
       </div>
