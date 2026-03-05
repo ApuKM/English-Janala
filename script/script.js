@@ -3,9 +3,7 @@ const createElements = (arr) => {
     return `<span class="text-gray-400 font-bangla">কোন সমার্থক শব্দ পাওয়া যায়নি</span>`;
   }
 
-  const htmlElements = arr.map(
-    el => `<span class="btn">${el}</span>`
-  );
+  const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
 
   return htmlElements.join(" ");
 };
@@ -13,14 +11,14 @@ const createElements = (arr) => {
 const displaySpinner = (status) => {
   const spinnerEl = document.getElementById("spinner");
   const wordContainer = document.getElementById("word-container");
-  if(status){
+  if (status) {
     spinnerEl.classList.remove("hidden");
     wordContainer.classList.add("hidden");
-  }else{
+  } else {
     spinnerEl.classList.add("hidden");
     wordContainer.classList.remove("hidden");
   }
-}
+};
 
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -128,3 +126,20 @@ const displayWordsByLevel = (dataArray) => {
 };
 
 loadLessons();
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  removeActiveClass();
+  displaySpinner(true);
+  const inputEl = document.getElementById("input-search");
+  const inputVal = inputEl.value.toLowerCase().trim();
+  // console.log(inputVal)
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const words = data.data;
+      const filteredWords = words.filter(word => word.word.toLowerCase().includes(inputVal));
+      // console.log(filteredWords)
+      displayWordsByLevel(filteredWords);
+    });
+});

@@ -143,11 +143,22 @@
       </h1>
       <div
         id="level-container"
-        class="flex gap-5 flex-wrap justify-center"
+        class="flex gap-5 flex-wrap justify-center mt-8"
       ></div>
     </section>
 
-    <section id="spinner" class="hidden pt-20">
+    <section class="flex justify-center pt-12">
+      <div class="join">
+        <div>
+          <label class="input validator join-item">
+            <input id="input-search" type="text" placeholder="search here" required />
+          </label>
+        </div>
+        <button id="btn-search" class="btn btn-primary join-item">Search</button>
+      </div>
+    </section>
+
+    <section id="spinner" class="hidden pt-10 md:pt-20">
       <div class="flex justify-center items-center">
         <span class="loading loading-spinner loading-xl"></span>
       </div>
